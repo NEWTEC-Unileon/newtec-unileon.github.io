@@ -7,7 +7,7 @@ website:
     left:
       - href: about.qmd
         text: About us
-      - href: index.qmd
+      - href: index.html
         text: Home
       - text: Metagenomes
         menu: 
@@ -34,10 +34,11 @@ website:
 
 format:
   html:
-    theme: Cerulean
-    css: styles.css
-    toc: true
-    code-fold: false
-    code-tools: true
+   # theme: Cerulean
+    theme: jekyll-theme-minimal
+   # css: styles.css
+   # toc: true
+   # code-fold: false
+   # code-tools: true
 
 editor: visual
