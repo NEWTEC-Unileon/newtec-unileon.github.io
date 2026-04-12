@@ -1,0 +1,43 @@
+project:
+  type: website
+  output-dir: docs
+website:
+  title: "NEWTEC-Unileon Pipelines"
+  navbar:
+    left:
+      - href: about.qmd
+        text: About us
+      - href: index.qmd
+        text: Home
+      - text: Metagenomes
+        menu: 
+          - href: Metagenomes_Illumina.qmd
+            text: Illumina
+          - href: Metagenomes_Nanopore.qmd 
+            text: Nanopore
+      - text: Genomes
+        menu: 
+          - href: Genomes_Illumina.qmd
+            text: Illumina
+          - href: Genomes_Nanopore.qmd
+            text: Nanopore
+          - href: Hybrid_assembly.qmd
+            text: Hybrid assembly
+
+    right: 
+      - icon: github 
+        aria-label: GitHub
+        href: https://github.com/NEWTEC-Unileon
+        
+      - text: "<img src='LOGO_OFICIAL.png' title='web research group' alt='web research group' style='height:20px;'>"
+        href: https://portalcientifico.unileon.es/grupos/8577/detalle
+
+format:
+  html:
+    theme: Cerulean
+    css: styles.css
+    toc: true
+    code-fold: false
+    code-tools: true
+
+editor: visual
