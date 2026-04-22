@@ -6,3 +6,122 @@ body {
   background-color: #476ed7; // Cambia el color de fondo
   color: #FFF;              // Cambia el color de texto
 }
+
+/* Tipografía moderna */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
+
+/* Fondo general verde menta suave */
+body {
+    background-color: #e8f8f2;  // Cambia el color de fondo
+    font-family: 'Inter', sans-serif;
+    color: #2e2e2e;            // Cambia el color de texto
+    margin: 0;
+    padding: 20px;
+}
+
+/* Título principal elegante */
+h1.title {
+    font-size: 48px;
+    font-weight: 700;
+    text-align: center;
+    color: #1b4d3e;
+    margin-top: 20px;
+    margin-bottom: 30px;
+}
+
+/* Subtítulos */
+h2, h3, h4 {
+    color: #245c4f;
+    font-weight: 600;
+}
+
+/* Tablas estilo limpio */
+table.dataTable,
+table {
+    background-color: white;
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+    border-radius: 6px;
+    overflow: hidden;
+}
+
+/* Encabezado de tabla */
+table th {
+    background-color: #d6eee7;
+    color: #1b4d3e;
+    font-weight: 700;
+    padding: 10px;
+    border-bottom: 2px solid #b7dcd2;
+}
+
+/* Celdas */
+table td {
+    padding: 8px 10px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Filas alternas */
+table tr:nth-child(even) {
+    background-color: #f7fdfb;
+}
+
+/* Hover */
+table tr:hover {
+    background-color: #e3f5ef;
+}
+
+/* Código */
+pre, code {
+    background-color: #f1f8f6;
+    border-left: 4px solid #7ac4a8;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+/* Enlaces */
+a {
+    color: #1b7f6b;
+    font-weight: 600;
+}
+a:hover {
+    color: #14594a;
+}
+
+/* ─────────────────────────────────────────────── */
+/* ⭐ LEYENDA PROFESIONAL (Diseño 1: Info Card) ⭐ */
+/* ─────────────────────────────────────────────── */
+
+.legend {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 10;
+
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 18px 22px;
+
+    border: 1px solid #d9e2ec;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+
+    font-family: 'Inter', sans-serif;
+    font-size: 14px;
+    color: #2e3a45;
+    max-width: 260px;
+    line-height: 1.5;
+}
+
+.legend h3 {
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 16px;
+    font-weight: 700;
+    color: #1b4d3e;
+}
+
+.legend ul {
+    padding-left: 18px;
+    margin: 0;
+}
