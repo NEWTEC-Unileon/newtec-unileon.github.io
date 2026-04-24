@@ -1,15 +1,16 @@
 ---
 ---
-@import "{{ site.theme }}";
-
-body {
-  background-color: #476ed7; // Cambia el color de fondo
-  color: #FFF;              // Cambia el color de texto
-}
-
 /* Tipografía moderna */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
+.button-gp button {
+  float: left;
+  background-color: grey;
+  border: 2px soild black;
+  padding: 15px 30px;
+  color: white;
+  cursor:pointer;
+}
 /* Fondo general verde menta suave */
 body {
     background-color: #e8f8f2;  // Cambia el color de fondo
