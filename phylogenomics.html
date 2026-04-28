@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+
+<html>
+  <link rel="stylesheet" href="css/style.css"></link>
+</html>
+   <!--  green=#93cf53  blue=#476ed7  -->
+
+<header class="cabecera-rectangulo">
+<div style="display: flex; align-items: center; gap: 0px;">
+<!-- <a href="https://portalcientifico.unileon.es/grupos/8577/detalle" target="_blank">
+  <img src="images/LOGO_OFICIAL.svg" width="150" height=auto>
+</a>
+<a href="https://www.unileon.es/" target="_blank">
+<img src="images/escudo-ule.svg" width="120" height=auto>
+</a>
+ -->
+<div class="navbar-flex">
+<button class="btn-title" onclick="location.href='index.html'">NEWTEC-Unileon Bioinformatic Pipelines</button>
+<div class="dropdown">
+  <button>Genomics</button>
+  <div class="dropdown-content">
+    <a href="#">Basic_workflow - illumina</a>
+    <a href="#">Basic_workflow - nanopore</a>
+    <a href="phylogenomics.html">Phylogenomics</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button>Metagenomics</button>
+  <div class="dropdown-content">
+    <a href="#">Basic_workflow</a>
+    <a href="#">Taxonomy - read level</a>
+    <a href="img src=images/LOGO_OFICIAL.svg" width="150" height="125">Strain analysis - read level</a>
+    <a href="source_tracker2_piechart.html">SourceTracker analysis</a>
+    <a href="#">Resistome - read level</a>
+    <a href="#">Resistome - contig level</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button>Other analysis</button>
+  <div class="dropdown-content">
+    <a href="#">Integron metabarcoding</a>
+    <a href="#">ARG-capture - Nanopore</a>
+    <a href="#">16SrRNA metataxonomy</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button>R-plots</button>
+  <div class="dropdown-content">
+    <a href="#">Taxonomy basic analysis</a>
+    <a href="#">ARG-contig plots</a>
+    <a href="#">Basic heatmap plot</a>
+    <a href="#">Complex heatmap plot</a>
+  </div>
+</div>
+</div> <!--para cerrar navbar-flex-->
+</div> <!--para cerrar display flex-->
+</header>
+
+<!--Colorear cuando haya código bash-->
+<script src="https://cloudflare.com"></script>
+<script>new ClipboardJS('.copy-button');</script>
+
+<script>
+function copyCode(button) {
+    // Busca el texto dentro del bloque <code>
+    const code = button.parentElement.querySelector('code').innerText;
+    
+    // Copia al portapapeles
+    navigator.clipboard.writeText(code).then(() => {
+        // Feedback visual: cambia el texto del botón temporalmente
+        const originalText = button.innerText;
+        button.innerText = '¡Copiado!';
+        button.classList.add('copied'); // Opcional: para estilos CSS
+        
+        setTimeout(() => {
+            button.innerText = originalText;
+            button.classList.remove('copied');
+        }, 2000);
+    }).catch(err => {
+        console.error('Error al copiar:', err);
+    });
+}
+</script>
+
+<h1 id="average-aminoacidic-identity">Average Aminoacidic Identity</h1>
+<p>This pipeline uses <a href="https://endixk.github.io/ezaai/">EzAAI</a> to calculate Average Aminoacidic Identity values between a set of genomes, preferably from the same genus.
+The first step is to install EzAAi following the instructions from <a href="https://github.com/endixk/ezaai">https://github.com/endixk/ezaai</a>:</p>
+<div class="code-container">
+   <button class="copy-button" onclick="copyCode(this)">Copy</button>
+   <pre><code>conda install -c bioconda ezaai</code></pre>
+</div>
+<p>Then, a list of the genomes to be compared must be done by:</p>
+<div class="code-container">
+   <button class="copy-button" onclick="copyCode(this)">Copy</button>
+   <pre><code>ls GENOMES_FOLDER/ | sed “s/.fna//g” > list.txt</code></pre>
+</div>
+<p>The <em>.fna</em> must be change according to the termination of your files, if they not finish by <em>.fna</em>. A very dirty and useful way to avoid this problem may be include all variations for fasta file terminations:</p>
+<div class="code-container">
+   <button class="copy-button" onclick="copyCode(this)">Copy</button>
+<pre><code>ls GENOMES_FOLDER/ | sed “s/.fna//g” | sed “s/.fasta//g” | sed “s/.fa//g” > list.txt</code></pre>
+</div>
+<p>If you have installed ezaai in a conda environment (for example a conda environment named <em>ezaai</em>), you must activate it and run the following commands:</p>
+<div class="code-container">
+  <button class="copy-button" onclick="copyCode(this)">Copy</button>
+
+<pre><code>conda activate ezaai
+mkdir faa_files
+for x in $(cat list.txt); do ezaai extract -i GENOMES_FOLDER/${x}.* -o faa_files/${x}.faa; done
+ezaai calculate -i faa_files/ -j faa_files/ -o AAI_output.txt -t NUMBER_THREADS
+ezaai cluster -i AAI_output.txt -o AAI_cluster.nwk
+</code></pre>
+</div>
+
+<p>The _AAI<em>ouput.txt</em> contains AAI values on column named <strong><em>AAI</em></strong>, that can be plotted on… while the AAI_clsuter.nwk can be visualized on tree visualized software, or employed for further phylogenetic-tree plots by R.</p>
+
+<h1 id="multi-locus-sequence-typing-mlst-">Multi-Locus Sequence Typing (MLST)</h1>
+<p>Multi-Locus Sequence Typing (MLST) can be done for those species with MLST scheme, that you can check (here)[<a href="https://github.com/tseemann/mlst/blob/master/db/scheme_species_map.tab">https://github.com/tseemann/mlst/blob/master/db/scheme_species_map.tab</a>] or by using <code>mlst --list</code> within mlst conda environment (see below), using the pipeline in <a href="https://github.com/tseemann/mlst">https://github.com/tseemann/mlst</a>.</p>
+<p>If you have installed mlst by conda, using <code>conda install -c conda-forge -c bioconda  mlst</code> in <em>mlst</em> conda environment, you can run the pipeline by:</p>
+<pre><code>conda activate mlst
+mlst –list > mlst_schemes.txt
+for x in $(ls GENOMES_FOLDER); do mlst --scheme SELECTED_SCHEME GENOMES_FOLDER/${x} >> scheme_SELECTED_SCHEME.txt ; done
+</code></pre>
+<h1 id="core-genome-and-snps">Core-genome and SNPs</h1>
+<p>The softwares <a href="https://github.com/tseemann/prokka">Prokka</a> and <a href="https://github.com/gtonkinhill/panaroo">Panaroo</a></p>
+<pre><code>conda create -n panaroo python=3.9
+conda activate panaroo
+conda install -c conda-forge -c bioconda -c defaults 'panaroo>=1.3'
+conda create -n prokka bioconda::prokka
+</code></pre>
+<pre><code>ls GENOMES_FOLDER/ | sed “s/.fna//g” | sed “s/.fasta//g” | sed “s/.fa//” > list.txt
+conda activate prokka
+mkdir prokka
+for x in $(cat list.txt); do prokka --outdir prokka/${x} --genus GENUS --cpus NUMBER_CPUS GENOMES_FOLDER/${x}.*; done
+mkdir prokka_gff_files
+for x in $(ls prokka); do cp prokka/${x}/*gff prokka_gff_files/${x}.gff; done
+conda activate panaroo
+mkdir results_panaroo
+panaroo -i prokka_gff_files/* -o results_panaroo/ --clean-mode strict -t NUMBER_THREADS
+panaroo-msa -o results_panaroo/ -a core --aligner mafft -t NUMBER_THREADS
+</code></pre>
+<p>The file _core_gene_alignment<em>filtered.aln</em> can be used for plotting the phylogenetic tree, based on core-genome alignment.</p>
+<pre><code>fasttree -nt -nj core_gene_alignment_filtered.aln > NJ.tree   #NJ method
+fasttree -nt  core_gene_alignment_filtered.aln > core_gen.tree   #Maximum-likehood method
+</code></pre>
