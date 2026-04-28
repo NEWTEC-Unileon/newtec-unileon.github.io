@@ -1,38 +1,72 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-</html>
 
 <html>
-  <head>
-    <title>My GitHub Pages Site</title>
-  </head>
-  <!--
-  <img src="images/LOGO_OFICIAL.png" width="500" height="250">
-  green=#93cf53
-  blue=#476ed7
-  -->
-    <div class="dropdown">
-      <button>Home</button>
-      <button class="dropdown">Genomics</button>
-        <div class="dropdown-content">
-          <a href="#">Opción 1</a>
-          <a href="#">Opción 2</a>
-          <a href="#">Opción 3</a>
-        </div>
-      <button>Metagenomics</button>
-      <button>R-plots</button>
-    </div>
-  <body>
-  <h1>NEWTEC-Unileon Bioinformatic Pipelines</h1>
+  <link rel="stylesheet" href="css/style.css"></link>
+</html>
+   <!--  green=#93cf53  blue=#476ed7  -->
+
+<header class="cabecera-rectangulo">
+<div style="display: flex; align-items: center; gap: 0px;">
+<!-- <a href="https://portalcientifico.unileon.es/grupos/8577/detalle" target="_blank">
+  <img src="images/LOGO_OFICIAL.svg" width="150" height=auto>
+</a>
+<a href="https://www.unileon.es/" target="_blank">
+<img src="images/escudo-ule.svg" width="120" height=auto>
+</a>
+ -->
+<div class="navbar-flex">
+<button class="btn-title" onclick="location.href='index.html'">NEWTEC-Unileon Bioinformatic Pipelines</button>
+<div class="dropdown">
+  <button>Genomics</button>
+  <div class="dropdown-content">
+    <a href="#">Basic_workflow - illumina</a>
+    <a href="#">Basic_workflow - nanopore</a>
+    <a href="phylogenomics.html">Phylogenomics</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button>Metagenomics</button>
+  <div class="dropdown-content">
+    <a href="#">Rawreads to MAGs - illumina</a>
+    <a href="#">Rawreads to MAGs - nanopore</a>
+    <a href="#">Taxonomy - read level</a>
+    <a href="img src=images/LOGO_OFICIAL.svg" width="150" height="125">Strain analysis - read level</a>
+    <a href="source_tracker2_piechart.html">SourceTracker analysis</a>
+    <a href="#">Resistome - read level</a>
+    <a href="#">Resistome - contig level</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button>Other analysis</button>
+  <div class="dropdown-content">
+    <a href="#">Integron metabarcoding</a>
+    <a href="#">ARG-capture - Nanopore</a>
+    <a href="#">16SrRNA metataxonomy</a>
+    <a href="#">HGT blastn</a>
+  </div>
+</div>
+<div class="dropdown">
+  <button>R-plots</button>
+  <div class="dropdown-content">
+    <a href="#">Taxonomy basic analysis</a>
+    <a href="#">ARG-contig plots</a>
+    <a href="#">Basic heatmap plot</a>
+    <a href="#">Complex heatmap plot</a>
+  </div>
+</div>
+</div> <!--para cerrar navbar-flex-->
+</div> <!--para cerrar display flex-->
+</header>
+
+<body>
+  
   <p>This website has been created to share all the bioinformatic pipelines employed in <a href="https://portalcientifico.unileon.es/grupos/8577/detalle">NEWTEC-Unileon</a> research's group for different omics analysis. </p>
   <p>We are trying to organize the web in a clear way to have the scripts for each pipeline in <a href="https://github.com/NEWTEC-Unileon/newtec-unileon.github.io">our github repository</a> to facilitate their downloading; while tutorials, tips and further explanations are (or will be) located in the current website.</p>
   <p>Of course, you can share and modify the scripts if there are no commercial interest.</p>
   <p></p>
   <p>If you have any question not hesitate to contact us: <a href="mailto:jcobd@unileon.es">jcobd@unileon.es</a>; <a href="mailto:efert@unileon.es">efert@unileon.es</a> </p>
-  </body>
+</body>
+<!--
   <nav>
     <ul>
         <li><a href="index.html">Home</a></li>
@@ -45,5 +79,4 @@
         <li><a href="metagenomes_maglevel.html">MAGs analysis</a></li>
     </ul>
   </nav>
-
-</html>
+-->
