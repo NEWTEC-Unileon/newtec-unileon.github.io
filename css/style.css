@@ -1,23 +1,78 @@
 ---
 ---
-/* Tipografía moderna */
+/* Tipografia moderna */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
 
-.button-gp button {
-  float: left;
-  background-color: grey;
-  border: 2px soild black;
-  padding: 15px 30px;
-  color: white;
-  cursor:pointer;
+html, body {
+    margin: 0;
+    padding: 0;
 }
+.cabecera-rectangulo {
+    background-color:#93cf53; 
+    width: 100vw; /* usa el 100% del espacio visible */
+    height: 55px;
+    box-sizing: border-box;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+.navbar-flex {
+  display: flex;       /* Alinea los hijos en horizontal */
+  align-items: center; /* Alinea los botones verticalmente al centro */
+  gap: 0px;           /* Espacio entre botones */
+  /*background-color: #f1f1f1; /* Opcional: color de fondo de la barra */
+  padding: 10px;
+}
+.navbar-flex button {
+  width: 160px;  /* Todos los botones medirán 150px de ancho */
+  height: 45px;  /* Altura fija */
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  background-color: #93cf53;
+  font-size: 20px;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.navbar-flex button:hover { color:#476ed7;}
+
+.navbar-flex button.btn-title {
+  width: 450px;  /* Todos los botones medirán 150px de ancho */
+  height: 45px;  /* Altura fija */
+  white-space: nowrap; /* Evita que el texto se rompa en dos líneas */
+  background-color: #93cf53;
+  font-size: 20px;
+  font-weight: bold;
+  color: black;
+  padding: 10px 20px;
+  border: none;
+  cursor: pointer;
+}
+.navbar-flex button.btn-title:hover {
+    color: #476ed7; /* Cambia a blanco al pasar el ratón */
+}
+
+.dropdown { position: relative; display: inline-block; }
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 260px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.dropdown:hover .dropdown-content { display: block;}
+.dropdown-content a { color: black; padding: 12px; text-decoration: none; display: block; }
+.dropdown-content a:hover { background-color: #476ed7; color: white }
+
 /* Fondo general verde menta suave */
 body {
-    background-color: #e8f8f2;  // Cambia el color de fondo
+    background-color: #d2e9b9;
     font-family: 'Inter', sans-serif;
     color: #2e2e2e;            // Cambia el color de texto
     margin: 0;
-    padding: 20px;
+    padding: 50px 50px;
 }
 
 /* Título principal elegante */
@@ -72,14 +127,24 @@ table tr:hover {
     background-color: #e3f5ef;
 }
 
-/* Código */
-pre, code {
+/* Code */
+pre {
     background-color: #f1f8f6;
-    border-left: 4px solid #7ac4a8;
-    padding: 10px;
+    /*border-left: 4px solid #7ac4a8;*/
+    padding: 5px 15px;
     border-radius: 4px;
+    display: block;
+    font-family: monospace;
+    line-height: 1.5;
+    width: 100%;          /* O puedes poner un valor fijo como 600px */
+    max-width: 900px;   
+ }
+code {
+    background-color: transparent; /* Para que no se duplique el fondo con el de pre */
+    padding: 0px;
     font-family: monospace;
 }
+
 
 /* Enlaces */
 a {
@@ -90,9 +155,6 @@ a:hover {
     color: #14594a;
 }
 
-/* ─────────────────────────────────────────────── */
-/* ⭐ LEYENDA PROFESIONAL (Diseño 1: Info Card) ⭐ */
-/* ─────────────────────────────────────────────── */
 
 .legend {
     position: fixed;
@@ -114,7 +176,7 @@ a:hover {
     line-height: 1.5;
 }
 
-.legend h3 {
+.legend h1 {
     margin-top: 0;
     margin-bottom: 10px;
     font-size: 16px;
@@ -126,3 +188,33 @@ a:hover {
     padding-left: 18px;
     margin: 0;
 }
+
+/* Contenedor relativo para posicionar el botón dentro */
+.code-container {
+    position: relative;
+    margin-bottom: 10px;
+    width: 100%;          /* O puedes poner un valor fijo como 600px */
+    max-width: 900px;       
+}
+
+/* Estilo del botón de copiar */
+.copy-button {
+    position: absolute;
+    top: 3px;
+    right: 5px;
+    padding: 5px 5px;
+    background-color: #7ac4a8; /* Combinando con tu estilo verde */
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity 0.3s;
+}
+
+.copy-button:hover {
+    opacity: 1;
+    background-color: #5ea38a;
+}
+
